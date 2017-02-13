@@ -117,10 +117,10 @@ namespace Signhost.APIClient.Rest
 		/// <param name="transactionId">A valid transaction Id of an existing
 		/// transaction</param>
 		/// <param name="fileId">An Id for the file. Should be the same
-		/// as the fileId in the <see cref="AddOrReplaceFileToTansaction"/>.</param>
+		/// as the fileId in the <see cref="AddOrReplaceFileToTransaction"/>.</param>
 		/// <returns>A task</returns>
 		/// <remarks>Make sure to call this method before
-		/// <see cref="AddOrReplaceFileToTansaction"/>.</remarks>
+		/// <see cref="AddOrReplaceFileToTransaction"/>.</remarks>
 		public Task AddOrReplaceFileMetaToTransaction(FileMeta fileMeta, string transactionId, string fileId)
 		{
 			if (fileMeta == null) {
@@ -168,7 +168,7 @@ namespace Signhost.APIClient.Rest
 		/// <param name="fileId">A Id for the file. Using the file name is recommended.
 		/// If a file with the same fileId allready exists the file wil be replaced</param>
 		/// <returns>A Task</returns>
-		public Task AddOrReplaceFileToTansaction(Stream fileStream, string transactionId, string fileId)
+		public Task AddOrReplaceFileToTransaction(Stream fileStream, string transactionId, string fileId)
 		{
 			if (fileStream == null) {
 				throw new ArgumentNullException(nameof(fileStream));
@@ -215,7 +215,7 @@ namespace Signhost.APIClient.Rest
 		/// <param name="fileId">A Id for the file. Using the file name is recommended.
 		/// If a file with the same fileId allready exists the file wil be replaced</param>
 		/// <returns>A Task</returns>
-		public async Task AddOrReplaceFileToTansaction(string filePath, string transactionId, string fileId)
+		public async Task AddOrReplaceFileToTransaction(string filePath, string transactionId, string fileId)
 		{
 			if (filePath == null) {
 				throw new ArgumentNullException(nameof(filePath));
@@ -227,7 +227,7 @@ namespace Signhost.APIClient.Rest
 					FileAccess.Read,
 					FileShare.Delete | FileShare.Read))
 			{
-				await AddOrReplaceFileToTansaction(fileStream, transactionId, fileId).ConfigureAwait(false);
+				await AddOrReplaceFileToTransaction(fileStream, transactionId, fileId).ConfigureAwait(false);
 			}
 		}
 
